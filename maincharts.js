@@ -23,7 +23,11 @@ require([
   var webscene = new WebScene({
     portalItem: {
       // autocasts as new PortalItem()
+<<<<<<< HEAD
       id: "d0dcf8e72a9741bdbec2c4b8538b9ccf" // this is the id of the sceneview the app is connected to
+=======
+      id: "de3be64624474e06a14285954e07c1ca" // this is the id of the sceneview the app is connected to
+>>>>>>> change-scene-url
     }
   });
 
