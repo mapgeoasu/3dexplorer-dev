@@ -24,7 +24,7 @@ require(["esri/Map", "esri/views/SceneView", "esri/WebScene", "esri/layers/Scene
   var webscene = new WebScene({
     portalItem: {
       // autocasts as new PortalItem()
-      id: "78d7af4d3b524ddda205fe1c542c52ac" // this is the id of the sceneview the app is connected to
+      id: "de3be64624474e06a14285954e07c1ca" // this is the id of the sceneview the app is connected to
     }
   });   
 
