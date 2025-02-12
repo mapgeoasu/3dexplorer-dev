@@ -12,7 +12,7 @@ require([
   // Service URL for the maps_master table on AGOL
   var tableURL = "https://services3.arcgis.com/0OPQIK59PJJqLK0A/ArcGIS/rest/services/maps_master/FeatureServer/0/";
   // Title for the Cabinets Layer
-  var cabTitle = "cabinet_shelves_file_v6";
+  var cabTitle = "cabinets_shelves_file_v8";
 
   // setup the variable for highlight with no value
   var highlight = null;
@@ -21,7 +21,7 @@ require([
   var webscene = new WebScene({
     portalItem: {
       // autocasts as new PortalItem()
-      id: "481df6f7f3074a0d90a0c69bccbe397f" // this is the id of the sceneview the app is connected to
+      id: "d0dcf8e72a9741bdbec2c4b8538b9ccf" // this is the id of the sceneview the app is connected to
     }
   });
 
