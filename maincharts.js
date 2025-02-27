@@ -14,7 +14,7 @@ require([
   // Service URL for the maps_master table on AGOL
   var tableURL = "https://services3.arcgis.com/0OPQIK59PJJqLK0A/ArcGIS/rest/services/maps_master/FeatureServer/0/";
   // Title for the Cabinets Layer
-  var cabTitle = "cabinets_shelves_file_v8";
+  var cabTitle = "cabinets_shelves_file_v9";
 
   // setup the variable for highlight with no value
   var highlight = null;
