@@ -955,18 +955,42 @@ require([
       //var cabId = response.features[0].attributes.CAB_ID;
       var zmin = response.features[0].attributes.Z_Min / 3.28;
       var zmax = response.features[0].attributes.Z_Max / 3.28;
-
+      
+      // zoom to full extent of drawers during intial search 
+      var maxX, maxY, minX, minY;
+      for (var i = 0; i < feature.length; i++) {
+        if (i == 0) {
+          maxX = response.features[i].geometry.extent.xmax;
+          minX = response.features[i].geometry.extent.xmin;
+          maxY = response.features[i].geometry.extent.ymax;
+          minY = response.features[i].geometry.extent.ymin;
+        } else {
+          if (response.features[i].geometry.extent.xmax > maxX) {
+            maxX = response.features[i].geometry.extent.xmax;
+          }
+          if (response.features[i].geometry.extent.xmin < minX) {
+            minX = response.features[i].geometry.extent.xmin;
+          }
+          if (response.features[i].geometry.extent.ymax > maxY) {
+            maxY = response.features[i].geometry.extent.ymax;
+          }
+          if (response.features[i].geometry.extent.ymin < minY) {
+            minY = response.features[i].geometry.extent.ymin;
+          }
+        }
+      }
+      
       view.whenLayerView(cabLayer).then(function (layerView) {
         var queryExtent = new Query({
           objectIds: [objIds]
         });
         // zoom to the extent of drawer that is clicked on the table
         var new_ext = new Extent({
-          xmin: response.features[0].geometry.extent.xmin,
-          ymin: response.features[0].geometry.extent.ymin,
+          xmin: minX,
+          ymin: minY,
           zmin: zmin,
-          xmax: response.features[0].geometry.extent.xmax,
-          ymax: response.features[0].geometry.extent.ymax,
+          xmax: maxX,
+          ymax: maxY,
           zmax: zmax,
           spatialReference: { wkid: 4326 }
         });
@@ -974,7 +998,7 @@ require([
         cabLayer.queryExtent(queryExtent).then(function (result) {
           view.goTo(
             {
-              center: new_ext.expand(14),
+              center: new_ext.expand(1.25),
               // zoom: 13,
               tilt: 67.85,
               heading: 38.82
